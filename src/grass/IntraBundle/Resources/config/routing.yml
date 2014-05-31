@@ -1,0 +1,43 @@
+# training de création de page
+Jojo:
+    path:      /jojo
+    defaults: { _controller: grassIntraBundle:Jojo:test }
+
+sdzblog_voir_slug:
+    path:      /{annee}/{slug}.{_format}.{_local}
+    defaults:  { _controller: grassIntraBundle:Blog:voirSlug, _format: html, _local: fr}
+    requirements:
+        annee:  \d{4}
+        _format:  html|xml
+
+# src/sdz/BlogBundle/Resources/config/routing.yml
+
+sdzblog_accueil:
+    path:      /{page}
+    defaults:  { _controller: grassIntraBundle:Blog:index, page: 1}
+    requirements:
+        page:    \d*
+
+sdzblog_voir:
+    path:      /article/{id}
+    defaults:  { _controller: grassIntraBundle:Blog:voir }
+
+## ajouter,modifier,supprimmer article
+
+sdzblog_ajouter:
+    path:      /ajouter
+    defaults:  { _controller: grassIntraBundle:Blog:ajouter, page: 1}
+
+sdzblog_modifier:
+    path:      /modifier{id}
+    defaults:  { _controller: grassIntraBundle:Blog:modifier }
+    requirements:
+        id:    \d+
+
+sdzblog_supprimer:
+    path:      /supprimer/{id}
+    defaults:  { _controller: grassIntraBundle:Blog:supprimer }
+    requirements:
+        id:    \d+
+
+##
